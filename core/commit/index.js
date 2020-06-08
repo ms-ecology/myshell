@@ -46,9 +46,12 @@ async function run() {
     );
     var compiled = _.template(template);
     let a = compiled(commitOpt);
-    let commandStr = `git pull && git add ${commitFile} && git commit -m "${a}"`
-    needPush && (commandStr += `&& git push`)
-    cp.execSync(commandStr)
+    let commandStr = `git pull && git add ${commitFile} && git commit -m "${a}"`;
+    needPush && (commandStr += `&& git push`);
+    cp.execSync(commandStr, {
+      encoding: "utf-8",
+      stdio: "inherit",
+    });
   }
 }
 
