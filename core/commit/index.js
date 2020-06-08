@@ -1,7 +1,6 @@
 const cp = require("child_process");
 const fs = require("fs");
 const path = require("path");
-const { v4: uuidv4 } = require("uuid");
 const _ = require("lodash");
 const inquirer = require("inquirer");
 const { Command } = require("commander");
@@ -20,8 +19,15 @@ const commitFile = args[1] || ".";
 
 console.log(commitMsg, commitFile);
 
+function exec(commandStr) {
+  return cp.execSync(commandStr, {
+    encoding: "utf-8",
+    stdio: "inherit",
+  });
+}
+
 async function run() {
-  let commitOpt;
+  let commitOpt, commandStr;
   if (!commitMsg) {
     commitOpt = await inquirer
       .prompt(require("./prompt"))
@@ -39,20 +45,19 @@ async function run() {
         }
         return;
       });
+  } else {
+    commandStr = `git pull && git add ${commitFile} && git commit -m "${commitMsg}"`;
   }
   if (commitOpt) {
     let template = fs.readFileSync(
       path.resolve(__dirname, "./assets/commit-template.tpl")
     );
     var compiled = _.template(template);
-    let a = compiled(commitOpt);
-    let commandStr = `git pull && git add ${commitFile} && git commit -m "${a}"`;
+    let commitFileText = compiled(commitOpt);
+    commandStr = `git pull && git add ${commitFile} && git commit -m "${commitFileText}"`;
     needPush && (commandStr += `&& git push`);
-    cp.execSync(commandStr, {
-      encoding: "utf-8",
-      stdio: "inherit",
-    });
   }
+  exec(commandStr); //执行语句
 }
 
 run();
