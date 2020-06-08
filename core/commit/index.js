@@ -46,8 +46,9 @@ async function run() {
     );
     var compiled = _.template(template);
     let a = compiled(commitOpt);
-    uuidv4(); // ⇨ '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
-    console.log(a, "asdasdasdsda");
+    let commandStr = `git pull && git add ${commitFile} && git commit -m "${a}"`
+    needPush && (commandStr += `&& git push`)
+    cp.execSync(commandStr)
   }
 }
 
