@@ -1,12 +1,20 @@
 {
   "name": "myshell",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "some commands",
   "main": "core/",
   "bin": {
-    "ms": "core/commit"
+    "ms": "core/commit/index.js"
   },
   "scripts": {},
+  "keywords": [
+    "node",
+    "shell"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anotherso1a/myshell"
+  },
   "author": "AnotherSola",
   "license": "MIT",
   "dependencies": {
