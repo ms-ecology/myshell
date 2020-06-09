@@ -18,8 +18,6 @@ let args = process.argv.slice(2).filter((s) => !s.startsWith("-"));
 let commitMsg = args[0];
 const commitFile = args[1] || ".";
 
-console.log(commitMsg, commitFile);
-
 function exec(commandStr) {
   return cp.execSync(commandStr, {
     encoding: "utf-8",
@@ -50,7 +48,7 @@ async function run() {
     commandStr = `git pull && git add ${commitFile} && git commit -m "${commitMsg}"`;
   }
   if (commitOpt) {
-    let template = require('./assets/commit-template')
+    let template = require("./assets/commit-template");
     var compiled = _.template(template);
     let commitFileText = compiled(commitOpt);
     commandStr = `git pull && git add ${commitFile} && git commit -m "${commitFileText}"`;
