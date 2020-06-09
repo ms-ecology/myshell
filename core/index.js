@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const { Command } = require("commander");
 const version = require("../package.json").version;
 const { addOption } = require("../util/index");
