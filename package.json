@@ -2,18 +2,16 @@
   "name": "myshell",
   "version": "1.0.0",
   "description": "some commands",
-  "main": "core/index.js",
+  "main": "core/",
   "bin": {
-    "c": "core/index"
+    "ms": "core/commit"
   },
   "scripts": {},
-  "author": "",
+  "author": "AnotherSola",
   "license": "MIT",
-  "devDependencies": {
-    "chalk": "^4.0.0",
-    "commander": "^5.1.0"
-  },
   "dependencies": {
+    "chalk": "^4.0.0",
+    "commander": "^5.1.0",
     "inquirer": "^7.1.0",
     "lodash": "^4.17.15",
     "lodash.map": "^4.6.0",

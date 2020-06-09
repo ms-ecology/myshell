@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const cp = require("child_process");
 const fs = require("fs");
 const path = require("path");
@@ -49,9 +50,7 @@ async function run() {
     commandStr = `git pull && git add ${commitFile} && git commit -m "${commitMsg}"`;
   }
   if (commitOpt) {
-    let template = fs.readFileSync(
-      path.resolve(__dirname, "./assets/commit-template.tpl")
-    );
+    let template = require('./assets/commit-template')
     var compiled = _.template(template);
     let commitFileText = compiled(commitOpt);
     commandStr = `git pull && git add ${commitFile} && git commit -m "${commitFileText}"`;
