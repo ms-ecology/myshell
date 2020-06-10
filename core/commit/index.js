@@ -44,7 +44,7 @@ async function run() {
   if (commitOpt) {
     let template = require("./assets/commit-template");
     var compiled = _.template(template);
-    let commitFileText = compiled(commitOpt);
+    let commitFileText = compiled(commitOpt).trim();
     commandStr = `${noPull} git add ${commitFile} && git commit -m "${commitFileText}"`;
     needPush && (commandStr += `&& git push`);
   }
