@@ -48,7 +48,7 @@ async function run() {
     commandStr = `${noPull} git add ${commitFile} && git commit -m "${commitFileText}"`;
     needPush && (commandStr += `&& git push`);
   }
-  console.log("automatic pull...");
+  !noPull && console.log("automatic pull...");
   exec(commandStr); //执行语句
 }
 
