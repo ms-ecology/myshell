@@ -16,6 +16,10 @@ program
   .command("commit [commit-message] [file]", "create a commit")
   .command("template", "load your own script or script file")
   .command("edit <command>", "edit a command's source code")
-  .command("cat <command>", "display a command's source code")
+  .command("cat <command>", "display a command's source code");
+program
+  .command("sos")
+  .description("if you need some help, call this...")
+  .action(() => console.log("https://github.com/anotherso1a/myshell/issues"));
 
 program.parse(process.argv);
