@@ -95,7 +95,7 @@ async function run() {
   let checkedPrompts = prompts.filter((e) => !options[e.name]);
 
   inquirer.prompt(checkedPrompts).then((answer) => {
-    if (answer.cmd.startsWith("$")) {
+    if (answer.cmd && answer.cmd.startsWith("$")) {
       //处理inquirer中的cover
       let nCmd = answer.cmd.replace(/^\$/, "");
       if (originConfig[nCmd]) {
