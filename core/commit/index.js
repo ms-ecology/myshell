@@ -1,9 +1,7 @@
 #!/usr/bin/env node
-const cp = require("child_process");
-const fs = require("fs");
-const path = require("path");
 const _ = require("lodash");
 const inquirer = require("inquirer");
+const exec = require("../util/exec");
 const { Command } = require("commander");
 const program = new Command();
 
@@ -17,15 +15,6 @@ let args = process.argv.slice(2).filter((s) => !s.startsWith("-"));
 
 let commitMsg = args[0];
 const commitFile = args[1] || ".";
-
-console.log(commitMsg, commitFile);
-
-function exec(commandStr) {
-  return cp.execSync(commandStr, {
-    encoding: "utf-8",
-    stdio: "inherit",
-  });
-}
 
 async function run() {
   let commitOpt, commandStr;
@@ -50,12 +39,13 @@ async function run() {
     commandStr = `git pull && git add ${commitFile} && git commit -m "${commitMsg}"`;
   }
   if (commitOpt) {
-    let template = require('./assets/commit-template')
+    let template = require("./assets/commit-template");
     var compiled = _.template(template);
     let commitFileText = compiled(commitOpt);
     commandStr = `git pull && git add ${commitFile} && git commit -m "${commitFileText}"`;
     needPush && (commandStr += `&& git push`);
   }
+  console.log("automatic pull...");
   exec(commandStr); //执行语句
 }
 
