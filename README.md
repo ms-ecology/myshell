@@ -2,6 +2,7 @@
 
 Quickly submit code and create your own running script
 
+[简体中文](./README.zh.md) | English
 
 ## Usage
 
@@ -19,10 +20,9 @@ npm i myshell -D # in some node project file, you can use command with "npx ms"
 
 type "ms" on command line for options and help.
 
-
 ### ms commit
 
-Use this commands to commit your git changes, we also provide a 
+Use this commands to commit your git changes, we also provide a
 
 simple command named "msc", the usage is same like "ms commit".
 
@@ -78,8 +78,3 @@ ms cat <your own command>
 ms edit <your own command>
 # open a vim editor to edit your command source code
 ```
-
-
-## TODO
-
-- ms merge \<to-branch\> [comments]
