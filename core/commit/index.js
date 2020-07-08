@@ -7,7 +7,10 @@ const program = new Command();
 
 program
   .option("-p, --push", "push after commit")
-  .option("-s, --stash", "stash changes and automatic pull origin before commit")
+  .option(
+    "-s, --stash",
+    "stash changes and automatic pull origin before commit"
+  );
 
 program.parse(process.argv);
 
@@ -47,7 +50,7 @@ async function run() {
     let commitFileText = compiled(commitOpt).trim();
     commandStr = `git add ${commitFile} && git commit -m "${commitFileText}"`;
   }
-  needStash && (commandStr = `git stash && git pull && git stash pop && ${commandStr}`)
+  needStash && (commandStr = `git stash && git pull && git stash pop && ${commandStr}`);
   needPush && (commandStr += `&& git push`);
   exec(commandStr); //执行语句
 }

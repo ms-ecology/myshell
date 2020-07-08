@@ -9,11 +9,13 @@ Quickly submit code and create your own running script
 ### install
 
 ```sh
-npm i myshell -g # then you can use with global command "ms"
+npm i myshell -g
+# then you can use with global command "ms"
 ```
 
 ```sh
-npm i myshell -D # in some node project file, you can use command with "npx ms"
+npm i myshell -D 
+# in some node project file, you can use command with "npx ms"
 ```
 
 ### ms
@@ -30,30 +32,28 @@ simple command named "msc", the usage is same like "ms commit".
 
 ```sh
 # e.g.1:
-msc "feat: a new feature" "src/" -p
-# the command will pull origin first
+msc "feat: a new feature" "src/" -s -p
+# the command will stash changes and pull origin, then fallback changes (-s)
 # then add all changes in src/
 # create a commit with message: "feat: a new feature"
-# push to origin
+# push to origin (-p)
 
 # e.g.2:
-msc -p
+msc -s
 # the command will ask for some questions to complete commit message
-# pull origin
+# then stash changes and pull origin, then fallback changes
 # create commit with comments
-# push to origin
 
 # e.g.3
 msc
 # the command will ask for some questions to complete commit message
-# pull origin
 # create commit with comments
 # without option "-p", it wouldn't push to origin, you need to run "git push" by yourself
 ```
 
 ### ms template
 
-Use this command to load your custom scripts. Then you can use "ms {your-command}" to run your commands.
+Use this command to load your custom scripts. Then you can use `ms {your-command}` to run your commands.
 
 **example**
 
@@ -78,3 +78,7 @@ ms cat <your own command>
 ms edit <your own command>
 # open a vim editor to edit your command source code
 ```
+
+## Warning
+
+Only `Mac OS` is been Supported now.
