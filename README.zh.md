@@ -4,6 +4,10 @@
 
 简体中文 | [English](./README.md)
 
+## 更新提示
+
+现已支持windows平台。注意，如果需要使用 `ms edit` 命令，需在 `git bash` 环境下，node、cmd、powershell环境均不支持。
+
 ## 使用方法
 
 ### 安装

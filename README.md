@@ -4,6 +4,10 @@ Quickly submit code and create your own running script
 
 [简体中文](./README.zh.md) | English
 
+## Update Tips
+
+now supported windows. Be caution that `ms edit` can't run in node, cmd or powershell, please use it in `git bash`.
+
 ## Usage
 
 ### install
@@ -78,7 +82,3 @@ ms cat <your own command>
 ms edit <your own command>
 # open a vim editor to edit your command source code
 ```
-
-## Warning
-
-Only `Mac OS` is been Supported now.
