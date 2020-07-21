@@ -14,8 +14,15 @@ const addCommand = (program, config = {}) => {
       .description(option.desc)
       .action(function (...args) {
         let commandOptions = args[1] || [];
-        let execEnv = execEnvMap[option.type];
-        return exec(`${execEnv} ${option.path} ${commandOptions.join(" ")}`);
+        try {
+          Array.isArray(commandOptions)
+            ? (commandOptions = commandOptions.join(" "))
+            : (commandOptions = commandOptions.args.join(" "));
+        } catch {
+          commandOptions = "";
+        }
+        let execEnv = execEnvMap[option.type] || "node";
+        return exec(`${execEnv} ${option.path} ${commandOptions}`);
       });
   });
 };

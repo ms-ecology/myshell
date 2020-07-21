@@ -6,7 +6,7 @@
   "bin": {
     "ms": "core/index.js",
     "msc": "core/commit/index.js",
-    "ms-commit": "core/commit/index.js",
+    "index-commit": "core/commit/index.js",
     "ms-template": "core/template/index.js",
     "ms-edit": "core/edit/index.js",
     "ms-cat": "core/cat/index.js"
@@ -14,6 +14,12 @@
   "keywords": [
     "node",
     "shell"
+  ],
+  "directories": {
+    "lib": "core"
+  },
+  "files": [
+    "core"
   ],
   "repository": {
     "type": "git",
