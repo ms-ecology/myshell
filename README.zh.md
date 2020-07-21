@@ -80,7 +80,3 @@ ms cat <your own command>
 ms edit <your own command>
 # 使用vim编辑器对已录入的命令源码进行编辑
 ```
-
-## 警告
-
-现在仅支持`Mac OS`系统
