@@ -1,15 +1,11 @@
 {
   "name": "myshell",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "some commands",
   "main": "core/",
   "bin": {
     "ms": "core/index.js",
-    "msc": "core/commit/index.js",
-    "index-commit": "core/commit/index.js",
-    "ms-template": "core/template/index.js",
-    "ms-edit": "core/edit/index.js",
-    "ms-cat": "core/cat/index.js"
+    "msc": "core/commit/index.js"
   },
   "keywords": [
     "node",
