@@ -1,6 +1,6 @@
 {
   "name": "myshell",
-  "version": "0.2.1",
+  "version": "1.0.0-0",
   "description": "some commands",
   "main": "core/",
   "bin": {
@@ -21,6 +21,7 @@
   "author": "AnotherSola",
   "license": "MIT",
   "dependencies": {
+    "@ms-ecology/ms-dl": "^1.0.0",
     "chalk": "^4.0.0",
     "commander": "^5.1.0",
     "fs-extra": "^9.0.1",
