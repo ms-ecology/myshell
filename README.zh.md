@@ -4,9 +4,72 @@
 
 简体中文 | [English](./README.md)
 
-## 更新提示
+## 重大更新✨✨
 
-现已支持windows平台。注意，如果需要使用 `ms edit` 命令，需在 `git bash` 环境下，node、cmd、powershell环境均不支持。
+### 远端脚本的使用🚀
+
+支持使用`ms add [module]`来下载远端脚本到本地进行使用，例如：
+
+```sh
+ms add git-branch-util # 添加 ms-ecology/git-branch-util 中的脚本至本地
+# 随后可以使用 ms cfb <branch-name> 进行分支的创建等功能
+```
+
+若需要移除不使用的远端库，也可以使用 `ms remove [module]` 来进行卸载，例如：
+
+```sh
+ms remove git-branch-util # 移除该模块提供的所有脚本
+```
+
+当然也可以使用原有的 `ms template` 能力，这种方式针对某些不使用的脚本进行单个的删除：
+
+```sh
+ms template -D cfb # 该命令只会删除 cfb 命令，对于模块提供的其他命令依旧会保留
+# 但请注意其中依赖问题，例如在git-branch-util中，cfb是基于feature的，当删除feature之后，cfb相应的也会执行出错
+```
+
+### 如何安装远端脚本📚
+
+在组织`ms-ecology`中，创建的仓库可直接被**myshell**进行下载，例如[git-branch-util](https://github.com/ms-ecology/git-branch-util)，若想添加该仓库中的代码，只需：
+
+```sh
+ms add git-branch-util # 该命令会自动去组织ms-ecology下进行搜寻并下载
+```
+
+也可以对外部仓库脚本进行下载：
+
+```sh
+# ms add <github-username/repo-name>
+ms add ms-ecology/number-game # 可填写 full path 进行下载，目前只支持github，gitlab等后续会考虑支持
+```
+
+### 开发远端脚本🔧
+
+**myshell**的远端脚本基于github，只需要新建一个仓库即可作为**myshell**远端下载的源。
+
+但请注意，仓库的根目录必须拥有 `config.json` 文件，这是 **myshell** 用于识别脚本配置的唯一文件：
+
+**config.json:**
+
+```json
+{
+  "test": {
+    "type": "shell",
+    "desc": "this is a test for myshell remote scripts.",
+    "path": "./shell/test.sh"
+  }
+}
+```
+
+`config.json`中的**每个key**是作为最终执行的**命令名**来进行处理，即，安装脚本后，可以使用 `ms test` 来调用执行脚本文件。
+
+**type** 表明脚本类型，如果是shell脚本，则值为shell，若为node脚本，目前**没有依赖识别**，请使用**单文件+原生模块**进行开发，或者使用webpack将node工程打包成**单文件脚本**。
+
+**desc** 是该命令的描述，一般用于告诉用户该命令的作用以及使用方法等。
+
+**path** 是脚本的位置，**需使用相对路径**，基于`config.json`。
+
+具体可参考：[git-branch-util](https://github.com/ms-ecology/git-branch-util)
 
 ## 使用方法
 
