@@ -8,6 +8,7 @@
     "msc": "core/commit/index.js"
   },
   "scripts": {
+    "release": "sh scripts/release.sh",
     "postinstall": "node -e \"try{require('./postinstall')}catch(e){}\""
   },
   "keywords": [
@@ -21,7 +22,7 @@
   "author": "AnotherSola",
   "license": "MIT",
   "dependencies": {
-    "@ms-ecology/ms-dl": "^1.0.1",
+    "@ms-ecology/ms-dl": "^1.0.3",
     "chalk": "^4.0.0",
     "commander": "^5.1.0",
     "fs-extra": "^9.0.1",
