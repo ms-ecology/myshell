@@ -145,3 +145,23 @@ ms cat <your own command>
 ms edit <your own command>
 # open a vim editor to edit your command source code
 ```
+
+## Warning⚠️
+
+Please make sure that the parameters you receive in the script you edit do not contain **any line breaks or space marks**.
+
+It will cause some problems in myshell when conversion parameters。
+
+For example, in some cases, spaces must be used (the script needs to accept JSON strings, etc.), we will convert `\n` to `_enter_`, `\s` to `_nbsp_`, Make sure your script contains replacement logic.
+
+A node example:
+
+```js
+let json = process.argv.slice(2)[0]
+json = json.replace(/_enter_/g, '\n').replace(/_nbsp_/g, ' ')
+try {
+  JSON.parse(json)
+} catch (err) {
+  console.log(err)
+}
+```
