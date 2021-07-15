@@ -1,6 +1,6 @@
 {
   "name": "myshell",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "some commands",
   "main": "core/",
   "bin": {
