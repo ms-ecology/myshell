@@ -16,8 +16,8 @@ const addCommand = (program, config = {}) => {
         let commandOptions = args[1] || [];
         try {
           Array.isArray(commandOptions)
-            ? (commandOptions = commandOptions.join(" "))
-            : (commandOptions = commandOptions.args.join(" "));
+            ? (commandOptions = commandOptions.map(e => JSON.stringify(e)).join(" "))
+            : (commandOptions = commandOptions.args.map(e => JSON.stringify(e)).join(" "));
         } catch {
           commandOptions = "";
         }
