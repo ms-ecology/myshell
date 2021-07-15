@@ -143,3 +143,23 @@ ms cat <your own command>
 ms edit <your own command>
 # 使用vim编辑器对已录入的命令源码进行编辑
 ```
+
+## 注意⚠️
+
+请确保您编辑的脚本中所接收的参数不存在**任意换行或者空格符号**。
+
+因为会导致myshell在转换参数时发生一些**问题**。
+
+如某些情况下必须使用空格（脚本需要接受json字符串等），我们会在进行参数传递时将`\n`转换为 `_enter_`，`\s`转换为`_nbsp_`，请确保您的脚本中有包含替换逻辑。
+
+以node脚本为例：
+
+```js
+let json = process.argv.slice(2)[0]
+json = json.replace(/_enter_/g, '\n').replace(/_nbsp_/g, ' ')
+try {
+  JSON.parse(json)
+} catch (err) {
+  console.log(err)
+}
+```
