@@ -152,13 +152,13 @@ Please make sure that the parameters you receive in the script you edit do not c
 
 It will cause some problems in myshell when conversion parameters。
 
-For example, in some cases, spaces must be used (the script needs to accept JSON strings, etc.), we will convert `\n` to `_enter_`, `\s` to `_nbsp_`, Make sure your script contains replacement logic.
+For example, in some cases, spaces must be used (the script needs to accept JSON strings, etc.), we will convert `\n` to `_enter_`, `\s` to `_nbsp_`, `'` to `_squote_`, Make sure your script contains replacement logic.
 
 A node example:
 
 ```js
 let json = process.argv.slice(2)[0]
-json = json.replace(/_enter_/g, '\n').replace(/_nbsp_/g, ' ')
+json = json.replace(/_enter_/g, '\n').replace(/_nbsp_/g, ' ').replace(/_squote_/g, "'")
 try {
   JSON.parse(json)
 } catch (err) {

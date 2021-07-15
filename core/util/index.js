@@ -17,8 +17,8 @@ const addCommand = (program, config = {}) => {
         try {
           Array.isArray(commandOptions)
             // replace \s \n to string
-            ? (commandOptions = commandOptions.map(e => e.replace(/\n/g, '_enter_').replace(/\s/g, '_nbsp_')).join(" "))
-            : (commandOptions = commandOptions.args.map(e => e.replace(/\n/g, '_enter_').replace(/\s/g, '_nbsp_')).join(" "));
+            ? (commandOptions = commandOptions.map(e => `'${e.replace(/\n/g, '_enter_').replace(/\s/g, '_nbsp_').replace(/'/g, '_squote_')}'`).join(" "))
+            : (commandOptions = commandOptions.args.map(e => `'${e.replace(/\n/g, '_enter_').replace(/\s/g, '_nbsp_').replace(/'/g, '_squote_')}'`).join(" "));
         } catch {
           commandOptions = "";
         }

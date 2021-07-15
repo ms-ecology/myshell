@@ -150,13 +150,13 @@ ms edit <your own command>
 
 因为会导致myshell在转换参数时发生一些**问题**。
 
-如某些情况下必须使用空格（脚本需要接受json字符串等），我们会在进行参数传递时将`\n`转换为 `_enter_`，`\s`转换为`_nbsp_`，请确保您的脚本中有包含替换逻辑。
+如某些情况下必须使用空格（脚本需要接受json字符串等），我们会在进行参数传递时将`\n`转换为 `_enter_`，`\s`转换为`_nbsp_`，`'`转换为`_squote_`，请确保您的脚本中有包含替换逻辑。
 
 以node脚本为例：
 
 ```js
 let json = process.argv.slice(2)[0]
-json = json.replace(/_enter_/g, '\n').replace(/_nbsp_/g, ' ')
+json = json.replace(/_enter_/g, '\n').replace(/_nbsp_/g, ' ').replace(/_squote_/g, "'")
 try {
   JSON.parse(json)
 } catch (err) {
