@@ -19,7 +19,7 @@ const addCommand = (program, config = {}) => {
           Array.isArray(commandOptions)
             // replace \s \n to string
             ? (commandOptions = commandOptions.map(e => execEnv === 'node' ? `'${e.replace(/\n/g, '_enter_').replace(/\s/g, '_nbsp_').replace(/'/g, '_squote_')}'` : e).join(" "))
-            : (commandOptions = commandOptions.args.map(e => 'node' ? `'${e.replace(/\n/g, '_enter_').replace(/\s/g, '_nbsp_').replace(/'/g, '_squote_')}'` : e).join(" "));
+            : (commandOptions = commandOptions.args.map(e => execEnv === 'node' ? `'${e.replace(/\n/g, '_enter_').replace(/\s/g, '_nbsp_').replace(/'/g, '_squote_')}'` : e).join(" "));
         } catch {
           commandOptions = "";
         }
