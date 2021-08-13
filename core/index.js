@@ -5,6 +5,7 @@ const path = require('path')
 const { addCommand } = require("./util/index");
 const getConfig = require("./template/getConfig");
 const config = getConfig();
+const checkForUpdate = require('./util/checkForUpdate')
 
 const program = new Command();
 program.version(version);
@@ -29,5 +30,10 @@ program
   .command("sos")
   .description("if you need some help, call this...")
   .action(() => console.log("https://github.com/anotherso1a/myshell/issues"));
+
+program.on('--help', () => {
+  let updateStr = checkForUpdate()
+  updateStr && console.log('\n' + updateStr)
+})
 
 program.parse(process.argv);
